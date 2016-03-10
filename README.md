@@ -5,3 +5,6 @@ sizeof() es una funcion que devuelve la representacion en bytesde un tipo de dat
 de la arquitectura y la implementacion, sin embargo C y C++ determinan un minimo de bits para la representacion de tipos,
 por ejemplo para char son 8bits y para int son 16bits.
 Entones la salida de sizeof( char ) es 1, y la salida de sizeof( int ) es 4, representados en bytes.
+
+El valor del sizeof de un struct no es la suma de los sizeof de sus elementos, ya que el compilador agrega padding
+por una cuestion de performance.
