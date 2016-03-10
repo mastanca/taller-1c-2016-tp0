@@ -1,2 +1,2 @@
-# taller-1c-2016
+# Taller de Programación I - TP 0
 Repositorio para los tps de taller
