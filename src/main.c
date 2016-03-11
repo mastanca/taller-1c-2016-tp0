@@ -10,20 +10,23 @@
 #include <string.h>
 #include <stdlib.h>
 
-int main( int argc, char *argv[] )
+#define SIZE_NOMBRE 20
+#define PRIMER_ARGUMENTO 1
+
+int main(int argc, char *argv[])
 {
-  char nombre[20];
+  char nombre[SIZE_NOMBRE];
   char *buffer;
   FILE *fp;
-  strcpy( nombre, argv[1] );
-  fp = fopen( nombre, "r" );
-  if( fp == NULL ) return 2;
-  buffer = malloc( sizeof(int) );  /* buffer innecesario */
-  while( !feof(fp) )
+  strcpy(nombre, argv[PRIMER_ARGUMENTO]);
+  fp = fopen(nombre, "r");
+  if (fp == NULL) return 0;
+  buffer = malloc(sizeof(int));  /* buffer innecesario */
+  while (!feof(fp))
   {
     int c = fgetc(fp);
-    if( c != EOF )
-      printf( "%c", (char) c );
+    if (c != EOF)
+      printf("%c", (char) c);
   }
   return 0;
 }

@@ -18,3 +18,6 @@ Las normas de codificacion fallaron ya que habia espacios en blanco de mas entre
 los parentesis y porque se utilizo strcpy en vez de snprintf, el cual es casi siempre mejor.
 La prueba 1 fallo porque al querer abrir un archivo que no existe el programa hace un return 2, que se entiende
 como que finalizo como un error ya que es distinto de 0.
+
+Se corrigieron los errores en las normas de codificacion, se reemplazaron los numeros magicos por constantes y se
+corrigio el valor de retorno si el fp == NULL.
