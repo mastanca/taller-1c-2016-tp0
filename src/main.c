@@ -28,5 +28,7 @@ int main(int argc, char *argv[])
     if (c != EOF)
       printf("%c", (char) c);
   }
+  fclose(fp);
+  free(buffer);
   return 0;
 }
