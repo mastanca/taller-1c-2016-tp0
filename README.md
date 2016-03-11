@@ -27,3 +27,14 @@ Los fallos en valgrind se deben a la apretura de archivos que luego no fueron ce
 que no esta cerrada con un free en ningun momento. Los archivos que no se cierran no pueden garantizar
 que todo lo que se mando a escribir a ellos sea realmente escrito, ya que puede haber quedado en algun buffer.
 El malloc que no se libera con free es memoria que se pierde ya que queda reservada pero nunca mas es usada.
+
+Se agregaron el free y el fclose. Arrojo un error con codigo extraño (134). Al parecer estaria tratando de
+leer mas alla del espacio reservado. Segun valgrind pareciera que estamos tratando de leerde la direccion 0x0
+lo que pareceria indicar un null pointer. Utilizando strncpy podria solucionarse el problema, ya que el tercer
+arguemento de dicha funcion es hasta cuantos caracteres voy a leer, evitando asi pasarme si es mas grande.
+Segmentation fault: Se produce cuando un programa trata de acceder a una posicion de memoria a la cual no tiene
+acceso, o en una forma no permitida.
+Buffer oveflow: Se genera cuando se escribe en un buffer y el tamaño de lo que tratamos de escribir excede el tamaño
+del buffer, pisando la memora adyacente a este.
+Para la prueba 2 se ingreso el archivo text corto y para la 4 el texto largo. El comando ejecutado para la prueba 3
+fue 	./tp soy-un-archivo-con-nombre-largo.txt
