@@ -21,3 +21,9 @@ como que finalizo como un error ya que es distinto de 0.
 
 Se corrigieron los errores en las normas de codificacion, se reemplazaron los numeros magicos por constantes y se
 corrigio el valor de retorno si el fp == NULL.
+Al subir esta nueva version las normas de codificacion solo presentan la sugerencia de snprintf. La prueba 1 paso
+exitosamente y ahora el fallo ocurre en la prueba numero 2.
+Los fallos en valgrind se deben a la apretura de archivos que luego no fueron cerrados y a la llamada a un malloc
+que no esta cerrada con un free en ningun momento. Los archivos que no se cierran no pueden garantizar
+que todo lo que se mando a escribir a ellos sea realmente escrito, ya que puede haber quedado en algun buffer.
+El malloc que no se libera con free es memoria que se pierde ya que queda reservada pero nunca mas es usada.

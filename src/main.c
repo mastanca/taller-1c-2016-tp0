@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
   FILE *fp;
   strcpy(nombre, argv[PRIMER_ARGUMENTO]);
   fp = fopen(nombre, "r");
-  if (fp == NULL) return 0;
+  if (fp == NULL) return 1;
   buffer = malloc(sizeof(int));  /* buffer innecesario */
   while (!feof(fp))
   {
