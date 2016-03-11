@@ -9,21 +9,25 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-#define SIZE_NOMBRE 20
-#define PRIMER_ARGUMENTO 1
-
+#define LARGO_FILE 20
+#define POS_NOMBRE_ARCHIVO 1
+#define ARCHIVO_NO_ENCONTRADO 1
+#define SALIDA_NORMAL 0
 int main(int argc, char *argv[])
 {
-  FILE *fp;
-  fp = fopen(argv[1], "r");
-  if (fp == NULL) return 1;
-  while (!feof(fp))
+  FILE *fp = stdin;
+  if (argc > POS_NOMBRE_ARCHIVO)
+  {
+    fp = fopen(argv[POS_NOMBRE_ARCHIVO], "r");
+    if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
+  }
+  while ( !feof(fp) )
   {
     int c = fgetc(fp);
-    if (c != EOF)
+    if ( c != EOF )
       printf("%c", (char) c);
   }
-  fclose(fp);
-  return 0;
+  if (argc > POS_NOMBRE_ARCHIVO)
+    fclose(fp);
+  return SALIDA_NORMAL;
 }
