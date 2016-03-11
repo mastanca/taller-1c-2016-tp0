@@ -15,13 +15,9 @@
 
 int main(int argc, char *argv[])
 {
-  char nombre[SIZE_NOMBRE];
-  char *buffer;
   FILE *fp;
-  strcpy(nombre, argv[PRIMER_ARGUMENTO]);
-  fp = fopen(nombre, "r");
+  fp = fopen(argv[1], "r");
   if (fp == NULL) return 1;
-  buffer = malloc(sizeof(int));  /* buffer innecesario */
   while (!feof(fp))
   {
     int c = fgetc(fp);
@@ -29,6 +25,5 @@ int main(int argc, char *argv[])
       printf("%c", (char) c);
   }
   fclose(fp);
-  free(buffer);
   return 0;
 }

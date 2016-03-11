@@ -38,3 +38,5 @@ Buffer oveflow: Se genera cuando se escribe en un buffer y el tamaño de lo que 
 del buffer, pisando la memora adyacente a este.
 Para la prueba 2 se ingreso el archivo text corto y para la 4 el texto largo. El comando ejecutado para la prueba 3
 fue 	./tp soy-un-archivo-con-nombre-largo.txt
+
+Se elimino el buffer inecesario y se puso directamente el argv1 en el fopen. 
