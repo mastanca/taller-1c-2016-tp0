@@ -24,6 +24,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -74,6 +75,34 @@ Informe de Trabajo Practico Nº 0
 \end_layout
 
 \begin_layout Section*
+Objetivo
+\end_layout
+
+\begin_layout Standard
+El objetivo del trabajo practico es familiarizarse con la herramiena SERCOM
+ provista por la catedra para la correccion automatica de trabajos practicos
+ y ejecucion de pruebas.
+ 
+\end_layout
+
+\begin_layout Standard
+Ademas se busca que los alumnos tomen un contacto temprano con el entorno
+ de trabajo que se va a utilizar a lo largo de la materia (Linux, gcc, C,
+ etc...).
+\end_layout
+
+\begin_layout Section*
+Configuacion del entorno
+\end_layout
+
+\begin_layout Standard
+El entorno de trabajo elegido para la realizacion del trabajo practico fue
+ una PC con SO Linux Mint 17.3 y compilador gcc 4.8 configurado al estandar
+ de C99.
+ 
+\end_layout
+
+\begin_layout Section*
 Desarrollo de pasos
 \end_layout
 
@@ -82,8 +111,8 @@ Paso 1
 \end_layout
 
 \begin_layout Standard
-Para el primer paso se desarrollo en un entorno linux (Linux Mint 17.3) un
- pequeño programa hola mundo para testear que el entorno este correctamente
+Para el primer paso se desarrollo en el entorno indicado en la seccion anterior
+ un pequeño programa hola mundo para testear que el entorno este correctamente
  configurado.
 \end_layout
 
@@ -415,7 +444,7 @@ reference "fig:Salida-error-SERCOM"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -469,6 +498,2003 @@ name "fig:Salida-error-SERCOM"
 \begin_layout Standard
 Los errores generados son errores del linker, ya que estamos haciendo llamadas
  a funcion no incluidas previamente con una directiva #include
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+int main( int argc, char *argv[] )
+\end_layout
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\begin_layout Plain Layout
+  char nombre[20];
+\end_layout
+
+\begin_layout Plain Layout
+  char *buffer;
+\end_layout
+
+\begin_layout Plain Layout
+  FILE *fp;
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  ztrcpy( nombre, argv[1] );
+\end_layout
+
+\begin_layout Plain Layout
+  fp = fopen( nombre, "r" );
+\end_layout
+
+\begin_layout Plain Layout
+  if( fp == NULL ) return 2;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  buffer = malloc( sizeof(int) ); /* buffer innecesario */
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  while( !feof(fp) )
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    int c = fgetc(fp);
+\end_layout
+
+\begin_layout Plain Layout
+    if( c != EOF )
+\end_layout
+
+\begin_layout Plain Layout
+      printf( "%c", (char) c );
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  return 0;
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codigo fuente paso 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paso 3
+\end_layout
+
+\begin_layout Standard
+Se corrigieron los errores de compilacion incluyendo la libreria stdlib.h
+ y cambiando la llamada a ztrcpy por strcpy.
+ A continuacion se realizo una segunda entrega del codigo, la cual pudo
+ ser compilada por el SERCOM pero fallo al validar las normas de codificacion
+ como podemos ver en las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Generacion-del-ejecutable"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Errores-normas-de"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Las normas de codificacion fallaron ya que habia espacios en blanco de mas
+ entre los argumentos de las funciones y los parentesis.
+ Ademas la salida nos sugiere el uso de la funcion snprintf en vez de strcpy,
+ la cual es casi siempre peor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/error paso 3.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Generacion del ejecutable y error normas de codificacion
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Generacion-del-ejecutable"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/stderr_normas_paso3.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Errores normas de codificacion
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Errores-normas-de"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ademas del error ya mencionado tambien fallo la prueba 1, ya que esta esperaba
+ que el programa retorne un 1 al no encontrar el archivo pasado como parametro
+ y retorno un 2.
+ Los codigos de retorno habituales para un programa son un 0 en caso de
+ salida exitosa o un 1 en caso de algun error, aunque en casos especiales
+ se pueden utilizar codigos de error distintos para indicar distintos tipos
+ de errores.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/fallo prueba 1 paso 3.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Falla prueba 1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Falla-prueba-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+int main( int argc, char *argv[] )
+\end_layout
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\begin_layout Plain Layout
+  char nombre[20];
+\end_layout
+
+\begin_layout Plain Layout
+  char *buffer;
+\end_layout
+
+\begin_layout Plain Layout
+  FILE *fp;
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  strcpy( nombre, argv[1] );
+\end_layout
+
+\begin_layout Plain Layout
+  fp = fopen( nombre, "r" );
+\end_layout
+
+\begin_layout Plain Layout
+  if( fp == NULL ) return 2;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  buffer = malloc( sizeof(int) ); /* buffer innecesario */
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  while( !feof(fp) )
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    int c = fgetc(fp);
+\end_layout
+
+\begin_layout Plain Layout
+    if( c != EOF )
+\end_layout
+
+\begin_layout Plain Layout
+      printf( "%c", (char) c );
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  return 0;
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codigo fuente paso 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paso 4
+\end_layout
+
+\begin_layout Standard
+En este paso se corrigieron los errores de codificacion que fueron marcados
+ por el SERCOM en el paso anterior, se reemplazaron los numeros magicos
+ por constantes declaradas con la directiva #define y se corrigio el codigo
+ de error incorrecto que hacia fallarla prueba 1.
+\end_layout
+
+\begin_layout Standard
+Se volvio a realizar una entrega del codigo, observando ahora que la prueba
+ 1 pasaba exitosamente (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Salida-corecta-de"
+
+\end_inset
+
+) y el chequeo de las normas de codificacion solo mostraba un warining sugiriend
+o el uso de la funcion snprintf (figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Prueba-1-correcta"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Sin embargo la prueba 2 fallo, ya que la corrida de Valgrind sobre el codigo
+ detectaba errores (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Salida-Valgrind"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Los fallos en Valgrind se deben a la apertura de archivos que luego no fueron
+ cerrados y a la llamada a un malloc que no esta seguida de un free en algun
+ momento.
+ Los archivos que no se cierran no pueden garantizar que todo lo que se
+ mando a escribir a ellos sea realmente escrito, ya que puede haber quedado
+ en algun buffer y ademas quedan marcados como en uso.
+ El malloc que no se libera con free es memoria que se pierde ya que queda
+ reservada pero nunca mas es usada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/paso 4 normas codif solo warning.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Salida corecta de normas de codificacion
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Salida-corecta-de"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/prueba 1 paso 4 exit.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Prueba 1 correcta
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Prueba-1-correcta"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/paso 4 salida valgrind.png
+	width 50page%
+	height 40pheight%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Salida Valgrind
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Salida-Valgrind"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+#define LARGO_FILE 20
+\end_layout
+
+\begin_layout Plain Layout
+#define POS_NOMBRE_ARCHIVO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define ARCHIVO_NO_ENCONTRADO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define SALIDA_NORMAL 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+int main(int argc, char *argv[])
+\end_layout
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\begin_layout Plain Layout
+  char nombre[LARGO_FILE];
+\end_layout
+
+\begin_layout Plain Layout
+  char *buffer;
+\end_layout
+
+\begin_layout Plain Layout
+  FILE *fp;
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  strcpy(nombre, argv[POS_NOMBRE_ARCHIVO]);
+\end_layout
+
+\begin_layout Plain Layout
+  fp = fopen(nombre, "r");
+\end_layout
+
+\begin_layout Plain Layout
+  if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  buffer = malloc(sizeof(int)); /* buffer innecesario */
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  while ( !feof(fp) )
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    int c = fgetc(fp);
+\end_layout
+
+\begin_layout Plain Layout
+    if ( c != EOF )
+\end_layout
+
+\begin_layout Plain Layout
+      printf("%c", (char) c);
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  return SALIDA_NORMAL;
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codigo paso 4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paso 5
+\end_layout
+
+\begin_layout Standard
+Se agrego una llamada a free y una a fclose y se volvio a relizar una entrega.
+ Esta vez las pruebas 1, 2 y 4 fueron correctas, pero la 3 arrojo un codigo
+ de error extraño (134).
+\end_layout
+
+\begin_layout Standard
+Segun lo apreciado el programa estaria tratando de leer mas alla del espacio
+ reservado de memoria.
+ Al leer la salida de la ejecucion de valgrind sobre el codigo actual pareciera
+ que estamos tratando de leerde la direccion 0x0.
+ Utilizando strncpy podria solucionarse el problema, ya que el tercer argumento
+ de dicha funcion es hasta cuantos caracteres voy a leer, evitando asi pasarme
+ si la entrada es mas grande.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/paso 5 salida valgrind prueba 2.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Salida valgrind prueba 2
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Salida-valgrind-prueba"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/salida valgrind paso 5 error.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Salida valgrind paso 5
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Salida-valgrind-paso"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A continuacion de explican los errores mas comunes de accesos a memoria
+\end_layout
+
+\begin_layout Itemize
+Segmentation fault: Se produce cuando un programa trata de acceder a una
+ posicion de memoria a la cual no tiene acceso, o en una forma no permitida.
+ 
+\end_layout
+
+\begin_layout Itemize
+Buffer oveflow: Se genera cuando se escribe en un buffer y el tamaño de
+ lo que tratamos de escribir excede el tamaño del buffer, pisando la memora
+ adyacente a este.
+ 
+\end_layout
+
+\begin_layout Standard
+Para la prueba 2 se ingreso el archivo text corto y para la 4 el texto largo.
+ El comando ejecutado para la prueba 3 fue ./tp soy-un-archivo-con-nombre-largo.tx
+t
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+La estructura de estos cuentos (y de todos los relativos a Holmes) es 
+\end_layout
+
+\begin_layout Plain Layout
+similar: Sherlock esta en su casa de Baker Street, muchas veces en compañia
+ 
+\end_layout
+
+\begin_layout Plain Layout
+de su amigo, cuando de repente aparece un personaje que viene a plantearle
+ 
+\end_layout
+
+\begin_layout Plain Layout
+un problema para el que necesita ayuda.
+ Otras veces esta noticia llega a el 
+\end_layout
+
+\begin_layout Plain Layout
+a traves del periodico.
+ Los casos son resueltospor la logica y el 
+\end_layout
+
+\begin_layout Plain Layout
+razonamiento del famoso detective.
+ Son cuentos de misterio, donde interviene 
+\end_layout
+
+\begin_layout Plain Layout
+la intriga y la aventura, unido al analisis psicologico de sus personajes.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Contenido archivo prueba 2
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Contenido-archivo-prueba"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+Rene Geronimo Favaloro (La Plata, Argentina, 12 de julio de 1923 - Buenos
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Aires, Argentina, 29 de julio de 2000) fue un prestigioso medico cirujano
+ 
+\end_layout
+
+\begin_layout Plain Layout
+toracico argentino, reconocido mundialmente por ser quien realizo el primer
+ 
+\end_layout
+
+\begin_layout Plain Layout
+bypass cardiaco en el mundo.
+ Estudio medicina en la Universidad de La Plata 
+\end_layout
+
+\begin_layout Plain Layout
+y una vez recibido, previo paso por el Hospital Policlinico, se mudo a la
+ 
+\end_layout
+
+\begin_layout Plain Layout
+localidad de Jacinto Arauz para reemplazar temporalmente al medico local,
+ 
+\end_layout
+
+\begin_layout Plain Layout
+quien tenia problemas de salud.
+ A su vez, leia bibliografia medica 
+\end_layout
+
+\begin_layout Plain Layout
+actualizada y empezo a tener interes en la cirugia toracica.
+ A fines de la 
+\end_layout
+
+\begin_layout Plain Layout
+decada de 1960 empezo a estudiar una tecnica para utilizar la vena safena
+ 
+\end_layout
+
+\begin_layout Plain Layout
+en la cirugia coronaria.
+ A principios de la decada de 1970 fundo la 
+\end_layout
+
+\begin_layout Plain Layout
+fundacion que lleva su nombre.
+ Se desempeno en la Conadep, condujo 
+\end_layout
+
+\begin_layout Plain Layout
+programas de television dedicados a la medicina y escribio libros.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Durante la crisis del 2000, su fundacion tenia una gran deuda economica
+ y 
+\end_layout
+
+\begin_layout Plain Layout
+le solicito ayuda al gobierno sin recibir respuesta, lo que lo indujo a
+ 
+\end_layout
+
+\begin_layout Plain Layout
+suicidarse.
+ El 29 de julio de 2000, despues de escribir una carta al 
+\end_layout
+
+\begin_layout Plain Layout
+Presidente De la Rua criticando al sistema de salud, se quito la vida de
+ un 
+\end_layout
+
+\begin_layout Plain Layout
+disparo al corazon.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Texto usado como entrada en prueba 4
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Texto-usado-como"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+#define LARGO_FILE 20
+\end_layout
+
+\begin_layout Plain Layout
+#define POS_NOMBRE_ARCHIVO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define ARCHIVO_NO_ENCONTRADO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define SALIDA_NORMAL 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+int main(int argc, char *argv[])
+\end_layout
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\begin_layout Plain Layout
+  char nombre[LARGO_FILE];
+\end_layout
+
+\begin_layout Plain Layout
+  char *buffer;
+\end_layout
+
+\begin_layout Plain Layout
+  FILE *fp;
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  strcpy(nombre, argv[POS_NOMBRE_ARCHIVO]);
+\end_layout
+
+\begin_layout Plain Layout
+  fp = fopen(nombre, "r");
+\end_layout
+
+\begin_layout Plain Layout
+  if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  buffer = malloc(sizeof(int)); /* buffer innecesario */
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  while ( !feof(fp) )
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    int c = fgetc(fp);
+\end_layout
+
+\begin_layout Plain Layout
+    if ( c != EOF )
+\end_layout
+
+\begin_layout Plain Layout
+      printf("%c", (char) c);
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  fclose(fp);
+\end_layout
+
+\begin_layout Plain Layout
+  free(buffer);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  return SALIDA_NORMAL;
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codigo paso 5
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Codigo-paso-5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paso 6
+\end_layout
+
+\begin_layout Standard
+Para corregir el problema reportado en el paso 5 se elimino el buffer inecesario
+ y se puso directamente el argv1 en la llamada a fopen.
+ 
+\end_layout
+
+\begin_layout Standard
+Seguido de la correcion se realizo una nueva entrega.
+ En esta ocasion todas las pruebas a excepcion de la ultima pasaron, ya
+ que aun no esta implementada la funcionalidad de la salida estandar (figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Resultado-prueba-5"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/salida normas codif paso 6.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Salida normas verificacion paso 6
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Salida-normas-verificacion"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/salida prueba 5 paso 6.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resultado prueba 5
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Resultado-prueba-5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+#define LARGO_FILE 20
+\end_layout
+
+\begin_layout Plain Layout
+#define POS_NOMBRE_ARCHIVO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define ARCHIVO_NO_ENCONTRADO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define SALIDA_NORMAL 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+int main(int argc, char *argv[])
+\end_layout
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\begin_layout Plain Layout
+  char *buffer;
+\end_layout
+
+\begin_layout Plain Layout
+  FILE *fp;
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  fp = fopen(argv[POS_NOMBRE_ARCHIVO], "r");
+\end_layout
+
+\begin_layout Plain Layout
+  if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  buffer = malloc(sizeof(int)); /* buffer innecesario */
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  while ( !feof(fp) )
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    int c = fgetc(fp);
+\end_layout
+
+\begin_layout Plain Layout
+    if ( c != EOF )
+\end_layout
+
+\begin_layout Plain Layout
+      printf("%c", (char) c);
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  fclose(fp);
+\end_layout
+
+\begin_layout Plain Layout
+  free(buffer);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  return SALIDA_NORMAL;
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Codigo fuente paso 6
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paso 7
+\end_layout
+
+\begin_layout Standard
+En este ultimo paso se agrego la funcionalidad de leer desde stdin.
+ 
+\end_layout
+
+\begin_layout Standard
+Podemos apreciar que para redireccionar stdin y stdout se utilizan los caractere
+s < y >.
+\end_layout
+
+\begin_layout Standard
+El caracter > permite redireccionar la salida del programa hacia un archivo.
+ El caracter < permite tomar como entrada desde stdin a un archivo indicado
+ despues de dicho caracter.
+\end_layout
+
+\begin_layout Standard
+Para finalizar se realizo una entrega final del codigo, con la cual todas
+ las pruebas fueron exitosas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/paso 7 entrega aceptada.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Entrega exitosa
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Entrega-exitosa"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/paso 7 pruebas exito.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pruebas exitosas
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Pruebas-exitosas"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/mira mama sin manos paso 7.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ejecucion prueba 5 sin teclado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/salida a salida paso 7.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Redireccionado stdout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Redireccionado-stdout"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
