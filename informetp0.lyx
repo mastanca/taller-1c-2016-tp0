@@ -221,10 +221,6 @@ name "fig:Ejecucion-de-hello-valgrind"
 
 \end_layout
 
-\begin_layout Subsubsection*
-Preguntas y respuestas
-\end_layout
-
 \begin_layout Itemize
 ¿Qué representa sizeof()? ¿Cuál sería el valor de salida de sizeof(char)
  y sizeof(int)?
@@ -243,6 +239,236 @@ sizeof() es una funcion que devuelve la representacion en bytes de un tipo
 Entones la salida de sizeof(char) es 1, y la salida de sizeof(int) es 4,
  representados ambos en bytes.
  
+\end_layout
+
+\begin_layout Itemize
+“El sizeof() de una struct de C es igual a la suma del sizeof() de cada
+ uno de los elementos de la misma”.
+ Explique la validez o invalidez de dicha afirmación.
+\end_layout
+
+\begin_layout Standard
+El valor del sizeof de un struct no es la suma de los sizeof de sus elementos,
+ ya que el compilador agrega padding por una cuestion de performance.
+ Asi por ejemplo el sizeof de un struct cuyas componentes son 1 char y 1
+ int nos dio 8 y la suma de los sizeof de las partes 5 en el siguiente ejemplo
+ .
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\small},tabsize=4,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,basicstyle={\ttfamily},stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main (int argc, const char * argv[]) {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	struct Books {
+\end_layout
+
+\begin_layout Plain Layout
+
+		int id;
+\end_layout
+
+\begin_layout Plain Layout
+
+		char authorInitial;
+\end_layout
+
+\begin_layout Plain Layout
+
+	};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	int sizeInt = sizeof(int);
+\end_layout
+
+\begin_layout Plain Layout
+
+	int sizeChar = sizeof(char);
+\end_layout
+
+\begin_layout Plain Layout
+
+	struct Books book1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	book1.id = 25;
+\end_layout
+
+\begin_layout Plain Layout
+
+	book1.authorInitial = 'A';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("%s", "Sum of the sizeofs: ");
+\end_layout
+
+\begin_layout Plain Layout
+
+	int sumOfSizeOfs = sizeof(book1.id) + sizeof(book1.authorInitial);
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("%d
+\backslash
+n", sumOfSizeOfs);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("%s", "Sum of the struct: ");
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("%d
+\backslash
+n", sizeof( book1 ) );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paso 2
+\end_layout
+
+\begin_layout Standard
+Para este segundo paso se entrego el codigo provisto por el enunciado.
+ Tal como predecia en enunciado las pruebas fallaron ya que el SERCOM no
+ pudo generar la aplicacion, como podemos ver en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Salida-error-SERCOM"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/stderr.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Salida error SERCOM
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Salida-error-SERCOM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los errores generados son errores del linker, ya que estamos haciendo llamadas
+ a funcion no incluidas previamente con una directiva #include
 \end_layout
 
 \end_body
