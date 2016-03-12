@@ -530,7 +530,7 @@ name "fig:Salida-error-SERCOM"
 
 \begin_layout Standard
 Los errores generados son errores del linker, ya que estamos haciendo llamadas
- a función no incluidas previamente con una directiva #include
+ a funciones no incluidas previamente con una directiva #include
 \end_layout
 
 \begin_layout Standard
@@ -850,7 +850,7 @@ name "fig:Errores-normas-de"
 \begin_layout Standard
 Además del error ya mencionado también fallo la prueba 1, ya que esta esperaba
  que el programa retorne un 1 al no encontrar el archivo pasado como parámetro
- y retorno un 2.
+ y retornó un 2.
  Los códigos de retorno habituales para un programa son un 0 en caso de
  salida exitosa o un 1 en caso de algún error, aunque en casos especiales
  se pueden utilizar códigos de error distintos para indicar distintos tipos
@@ -1120,7 +1120,7 @@ Sin embargo la prueba 2 fallo, ya que la corrida de Valgrind sobre el código
  detectaba errores (ver figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Salida-Valgrind"
+reference "fig:Salida-Valgrind-paso4"
 
 \end_inset
 
@@ -1260,10 +1260,6 @@ name "fig:Prueba-1-correcta"
 wide false
 sideways false
 status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset listings
@@ -2029,7 +2025,8 @@ Buffer overflow: Se genera cuando se escribe en un buffer y el tamaño de
 \end_layout
 
 \begin_layout Standard
-Para la prueba 2 se ingreso el archivo text corto y para la 4 el texto largo.
+Para la prueba 2 se ingreso el archivo texto corto y para la 4 el texto
+ largo.
  El comando ejecutado para la prueba 3 fue ./tp soy-un-archivo-con-nombre-largo.tx
 t
 \end_layout
