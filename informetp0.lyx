@@ -1,0 +1,249 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Informe de Trabajo Practico Nº 0
+\end_layout
+
+\begin_layout Section*
+Desarrollo de pasos
+\end_layout
+
+\begin_layout Subsection*
+Paso 1
+\end_layout
+
+\begin_layout Standard
+Para el primer paso se desarrollo en un entorno linux (Linux Mint 17.3) un
+ pequeño programa hola mundo para testear que el entorno este correctamente
+ configurado.
+\end_layout
+
+\begin_layout Standard
+Luego se instalo el programa 
+\emph on
+Valgrind 
+\emph default
+y se probo la ejecucion de nuestro hola mundo.
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ejecucion-de-hello"
+
+\end_inset
+
+ podemos ver la corrida del hola mundo y en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ejecucion-de-hello-valgrind"
+
+\end_inset
+
+ podemos ver la corrida con 
+\emph on
+Valgrind
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename screenshots/common_exec.png
+	width 50page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ejecucion de hello world
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ejecucion-de-hello"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename screenshots/valgrind_exec.png
+	width 50page%
+	groupId common_image
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ejecucion de hello world con Valgrind
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ejecucion-de-hello-valgrind"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Preguntas y respuestas
+\end_layout
+
+\begin_layout Itemize
+¿Qué representa sizeof()? ¿Cuál sería el valor de salida de sizeof(char)
+ y sizeof(int)?
+\end_layout
+
+\begin_layout Standard
+sizeof() es una funcion que devuelve la representacion en bytes de un tipo
+ de dato.
+ La representacion depende de la arquitectura y la implementacion, sin embargo
+ C y C++ determinan un minimo de bits para la representacion de tipos, por
+ ejemplo para char son 8bits y para int son 16bits.
+ 
+\end_layout
+
+\begin_layout Standard
+Entones la salida de sizeof(char) es 1, y la salida de sizeof(int) es 4,
+ representados ambos en bytes.
+ 
+\end_layout
+
+\end_body
+\end_document
