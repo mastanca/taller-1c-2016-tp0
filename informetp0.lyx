@@ -28,7 +28,7 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -74,30 +74,52 @@
 Informe de Trabajo Practico Nº 0
 \end_layout
 
+\begin_layout Standard
+\align center
+Facultad de Ingeniera - UBA
+\end_layout
+
+\begin_layout Standard
+\align center
+Autor: Martín Stancanelli
+\end_layout
+
+\begin_layout Standard
+\align center
+Padrón: 95188
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Objetivo
 \end_layout
 
 \begin_layout Standard
-El objetivo del trabajo practico es familiarizarse con la herramiena SERCOM
- provista por la catedra para la correccion automatica de trabajos practicos
- y ejecucion de pruebas.
+El objetivo del trabajo practico es familiarizarse con la herramienta SERCOM
+ provista por la cátedra para la corrección automática de trabajos prácticos
+ y ejecución de pruebas.
  
 \end_layout
 
 \begin_layout Standard
-Ademas se busca que los alumnos tomen un contacto temprano con el entorno
+Además se busca que los alumnos tomen un contacto temprano con el entorno
  de trabajo que se va a utilizar a lo largo de la materia (Linux, gcc, C,
  etc...).
 \end_layout
 
 \begin_layout Section*
-Configuacion del entorno
+Configuración del entorno
 \end_layout
 
 \begin_layout Standard
-El entorno de trabajo elegido para la realizacion del trabajo practico fue
- una PC con SO Linux Mint 17.3 y compilador gcc 4.8 configurado al estandar
+El entorno de trabajo elegido para la realización del trabajo practico fue
+ una PC con SO Linux Mint 17.3 y compilador gcc 4.8 configurado al estándar
  de C99.
  
 \end_layout
@@ -111,7 +133,7 @@ Paso 1
 \end_layout
 
 \begin_layout Standard
-Para el primer paso se desarrollo en el entorno indicado en la seccion anterior
+Para el primer paso se desarrollo en el entorno indicado en la sección anterior
  un pequeño programa hola mundo para testear que el entorno este correctamente
  configurado.
 \end_layout
@@ -121,7 +143,7 @@ Luego se instalo el programa
 \emph on
 Valgrind 
 \emph default
-y se probo la ejecucion de nuestro hola mundo.
+y se probo la ejecución de nuestro hola mundo.
 \end_layout
 
 \begin_layout Standard
@@ -167,7 +189,8 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/common_exec.png
-	width 50page%
+	width 100text%
+	groupId common_image
 
 \end_inset
 
@@ -175,7 +198,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ejecucion de hello world
+Ejecución de hello world
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Ejecucion-de-hello"
@@ -221,7 +244,7 @@ centering
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename screenshots/valgrind_exec.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -230,7 +253,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ejecucion de hello world con Valgrind
+Ejecución de hello world con Valgrind
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Ejecucion-de-hello-valgrind"
@@ -256,10 +279,10 @@ name "fig:Ejecucion-de-hello-valgrind"
 \end_layout
 
 \begin_layout Standard
-sizeof() es una funcion que devuelve la representacion en bytes de un tipo
+sizeof() es una función que devuelve la representación en bytes de un tipo
  de dato.
- La representacion depende de la arquitectura y la implementacion, sin embargo
- C y C++ determinan un minimo de bits para la representacion de tipos, por
+ La representación depende de la arquitectura y la implementación, sin embargo
+ C y C++ determinan un mínimo de bits para la representación de tipos, por
  ejemplo para char son 8bits y para int son 16bits.
  
 \end_layout
@@ -278,8 +301,8 @@ Entones la salida de sizeof(char) es 1, y la salida de sizeof(int) es 4,
 
 \begin_layout Standard
 El valor del sizeof de un struct no es la suma de los sizeof de sus elementos,
- ya que el compilador agrega padding por una cuestion de performance.
- Asi por ejemplo el sizeof de un struct cuyas componentes son 1 char y 1
+ ya que el compilador agrega padding por una cuestión de performance.
+ Así por ejemplo el sizeof de un struct cuyas componentes son 1 char y 1
  int nos dio 8 y la suma de los sizeof de las partes 5 en el siguiente ejemplo
  .
 \begin_inset Newline newline
@@ -426,9 +449,9 @@ Paso 2
 \end_layout
 
 \begin_layout Standard
-Para este segundo paso se entrego el codigo provisto por el enunciado.
- Tal como predecia en enunciado las pruebas fallaron ya que el SERCOM no
- pudo generar la aplicacion, como podemos ver en la figura 
+Para este segundo paso se entrego el código provisto por el enunciado.
+ Tal como predecía el enunciado las pruebas fallaron ya que el SERCOM no
+ pudo generar la aplicación, como podemos ver en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Salida-error-SERCOM"
@@ -462,7 +485,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/stderr.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -497,7 +520,7 @@ name "fig:Salida-error-SERCOM"
 
 \begin_layout Standard
 Los errores generados son errores del linker, ya que estamos haciendo llamadas
- a funcion no incluidas previamente con una directiva #include
+ a función no incluidas previamente con una directiva #include
 \end_layout
 
 \begin_layout Standard
@@ -518,10 +541,12 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 #include <stdio.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <string.h>
 \end_layout
 
@@ -530,38 +555,47 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 int main( int argc, char *argv[] )
 \end_layout
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
 \begin_layout Plain Layout
+
   char nombre[20];
 \end_layout
 
 \begin_layout Plain Layout
+
   char *buffer;
 \end_layout
 
 \begin_layout Plain Layout
+
   FILE *fp;
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   ztrcpy( nombre, argv[1] );
 \end_layout
 
 \begin_layout Plain Layout
+
   fp = fopen( nombre, "r" );
 \end_layout
 
 \begin_layout Plain Layout
+
   if( fp == NULL ) return 2;
 \end_layout
 
@@ -570,34 +604,42 @@ int main( int argc, char *argv[] )
 \end_layout
 
 \begin_layout Plain Layout
+
   buffer = malloc( sizeof(int) ); /* buffer innecesario */
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   while( !feof(fp) )
 \end_layout
 
 \begin_layout Plain Layout
+
   {
 \end_layout
 
 \begin_layout Plain Layout
+
     int c = fgetc(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
     if( c != EOF )
 \end_layout
 
 \begin_layout Plain Layout
+
       printf( "%c", (char) c );
 \end_layout
 
 \begin_layout Plain Layout
+
   }
 \end_layout
 
@@ -606,10 +648,12 @@ int main( int argc, char *argv[] )
 \end_layout
 
 \begin_layout Plain Layout
+
   return 0;
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -627,7 +671,7 @@ int main( int argc, char *argv[] )
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Codigo fuente paso 2
+Código fuente paso 2
 \end_layout
 
 \end_inset
@@ -649,10 +693,10 @@ Paso 3
 \end_layout
 
 \begin_layout Standard
-Se corrigieron los errores de compilacion incluyendo la libreria stdlib.h
+Se corrigieron los errores de compilación incluyendo la librería stdlib.h
  y cambiando la llamada a ztrcpy por strcpy.
- A continuacion se realizo una segunda entrega del codigo, la cual pudo
- ser compilada por el SERCOM pero fallo al validar las normas de codificacion
+ A continuación se realizo una segunda entrega del código, la cual pudo
+ ser compilada por el SERCOM pero fallo al validar las normas de codificación
  como podemos ver en las figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -671,9 +715,9 @@ reference "fig:Errores-normas-de"
 \end_layout
 
 \begin_layout Standard
-Las normas de codificacion fallaron ya que habia espacios en blanco de mas
- entre los argumentos de las funciones y los parentesis.
- Ademas la salida nos sugiere el uso de la funcion snprintf en vez de strcpy,
+Las normas de codificación fallaron ya que había espacios en blanco de mas
+ entre los argumentos de las funciones y los paréntesis.
+ Además la salida nos sugiere el uso de la función snprintf en vez de strcpy,
  la cual es casi siempre peor.
 \end_layout
 
@@ -704,7 +748,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/error paso 3.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -713,7 +757,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Generacion del ejecutable y error normas de codificacion
+Generación del ejecutable y error normas de codificación
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Generacion-del-ejecutable"
@@ -760,7 +804,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/stderr_normas_paso3.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -769,7 +813,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Errores normas de codificacion
+Errores normas de codificación
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Errores-normas-de"
@@ -794,12 +838,12 @@ name "fig:Errores-normas-de"
 \end_layout
 
 \begin_layout Standard
-Ademas del error ya mencionado tambien fallo la prueba 1, ya que esta esperaba
- que el programa retorne un 1 al no encontrar el archivo pasado como parametro
+Además del error ya mencionado también fallo la prueba 1, ya que esta esperaba
+ que el programa retorne un 1 al no encontrar el archivo pasado como parámetro
  y retorno un 2.
- Los codigos de retorno habituales para un programa son un 0 en caso de
- salida exitosa o un 1 en caso de algun error, aunque en casos especiales
- se pueden utilizar codigos de error distintos para indicar distintos tipos
+ Los códigos de retorno habituales para un programa son un 0 en caso de
+ salida exitosa o un 1 en caso de algún error, aunque en casos especiales
+ se pueden utilizar códigos de error distintos para indicar distintos tipos
  de errores.
  
 \end_layout
@@ -831,7 +875,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/fallo prueba 1 paso 3.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -878,14 +922,17 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 #include <stdio.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <string.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <stdlib.h>
 \end_layout
 
@@ -894,38 +941,47 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 int main( int argc, char *argv[] )
 \end_layout
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
 \begin_layout Plain Layout
+
   char nombre[20];
 \end_layout
 
 \begin_layout Plain Layout
+
   char *buffer;
 \end_layout
 
 \begin_layout Plain Layout
+
   FILE *fp;
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   strcpy( nombre, argv[1] );
 \end_layout
 
 \begin_layout Plain Layout
+
   fp = fopen( nombre, "r" );
 \end_layout
 
 \begin_layout Plain Layout
+
   if( fp == NULL ) return 2;
 \end_layout
 
@@ -934,34 +990,42 @@ int main( int argc, char *argv[] )
 \end_layout
 
 \begin_layout Plain Layout
+
   buffer = malloc( sizeof(int) ); /* buffer innecesario */
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   while( !feof(fp) )
 \end_layout
 
 \begin_layout Plain Layout
+
   {
 \end_layout
 
 \begin_layout Plain Layout
+
     int c = fgetc(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
     if( c != EOF )
 \end_layout
 
 \begin_layout Plain Layout
+
       printf( "%c", (char) c );
 \end_layout
 
 \begin_layout Plain Layout
+
   }
 \end_layout
 
@@ -970,10 +1034,12 @@ int main( int argc, char *argv[] )
 \end_layout
 
 \begin_layout Plain Layout
+
   return 0;
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -991,7 +1057,7 @@ int main( int argc, char *argv[] )
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Codigo fuente paso 3
+Código fuente paso 3
 \end_layout
 
 \end_inset
@@ -1013,14 +1079,14 @@ Paso 4
 \end_layout
 
 \begin_layout Standard
-En este paso se corrigieron los errores de codificacion que fueron marcados
- por el SERCOM en el paso anterior, se reemplazaron los numeros magicos
- por constantes declaradas con la directiva #define y se corrigio el codigo
+En este paso se corrigieron los errores de codificación que fueron marcados
+ por el SERCOM en el paso anterior, se reemplazaron los números mágicos
+ por constantes declaradas con la directiva #define y se corrigió el código
  de error incorrecto que hacia fallarla prueba 1.
 \end_layout
 
 \begin_layout Standard
-Se volvio a realizar una entrega del codigo, observando ahora que la prueba
+Se volvió a realizar una entrega del código, observando ahora que la prueba
  1 pasaba exitosamente (figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1028,8 +1094,8 @@ reference "fig:Salida-corecta-de"
 
 \end_inset
 
-) y el chequeo de las normas de codificacion solo mostraba un warining sugiriend
-o el uso de la funcion snprintf (figura 
+) y el chequeo de las normas de codificación solo mostraba un warning sugiriendo
+ el uso de la función snprintf (figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Prueba-1-correcta"
@@ -1040,7 +1106,7 @@ reference "fig:Prueba-1-correcta"
 \end_layout
 
 \begin_layout Standard
-Sin embargo la prueba 2 fallo, ya que la corrida de Valgrind sobre el codigo
+Sin embargo la prueba 2 fallo, ya que la corrida de Valgrind sobre el código
  detectaba errores (ver figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1054,11 +1120,11 @@ reference "fig:Salida-Valgrind"
 
 \begin_layout Standard
 Los fallos en Valgrind se deben a la apertura de archivos que luego no fueron
- cerrados y a la llamada a un malloc que no esta seguida de un free en algun
+ cerrados y a la llamada a un malloc que no esta seguida de un free en algún
  momento.
  Los archivos que no se cierran no pueden garantizar que todo lo que se
  mando a escribir a ellos sea realmente escrito, ya que puede haber quedado
- en algun buffer y ademas quedan marcados como en uso.
+ en algún buffer y además quedan marcados como en uso.
  El malloc que no se libera con free es memoria que se pierde ya que queda
  reservada pero nunca mas es usada.
 \end_layout
@@ -1086,7 +1152,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/paso 4 normas codif solo warning.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -1095,7 +1161,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Salida corecta de normas de codificacion
+Salida correcta de normas de codificación
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Salida-corecta-de"
@@ -1146,7 +1212,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/prueba 1 paso 4 exit.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -1249,14 +1315,17 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 #include <stdio.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <string.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <stdlib.h>
 \end_layout
 
@@ -1265,18 +1334,22 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 #define LARGO_FILE 20
 \end_layout
 
 \begin_layout Plain Layout
+
 #define POS_NOMBRE_ARCHIVO 1
 \end_layout
 
 \begin_layout Plain Layout
+
 #define ARCHIVO_NO_ENCONTRADO 1
 \end_layout
 
 \begin_layout Plain Layout
+
 #define SALIDA_NORMAL 0
 \end_layout
 
@@ -1285,38 +1358,47 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
 \begin_layout Plain Layout
+
   char nombre[LARGO_FILE];
 \end_layout
 
 \begin_layout Plain Layout
+
   char *buffer;
 \end_layout
 
 \begin_layout Plain Layout
+
   FILE *fp;
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   strcpy(nombre, argv[POS_NOMBRE_ARCHIVO]);
 \end_layout
 
 \begin_layout Plain Layout
+
   fp = fopen(nombre, "r");
 \end_layout
 
 \begin_layout Plain Layout
+
   if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
 \end_layout
 
@@ -1325,34 +1407,42 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   buffer = malloc(sizeof(int)); /* buffer innecesario */
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   while ( !feof(fp) )
 \end_layout
 
 \begin_layout Plain Layout
+
   {
 \end_layout
 
 \begin_layout Plain Layout
+
     int c = fgetc(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
     if ( c != EOF )
 \end_layout
 
 \begin_layout Plain Layout
+
       printf("%c", (char) c);
 \end_layout
 
 \begin_layout Plain Layout
+
   }
 \end_layout
 
@@ -1361,10 +1451,12 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   return SALIDA_NORMAL;
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1382,7 +1474,7 @@ int main(int argc, char *argv[])
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Codigo paso 4
+Código paso 4
 \end_layout
 
 \end_inset
@@ -1404,18 +1496,18 @@ Paso 5
 \end_layout
 
 \begin_layout Standard
-Se agrego una llamada a free y una a fclose y se volvio a relizar una entrega.
- Esta vez las pruebas 1, 2 y 4 fueron correctas, pero la 3 arrojo un codigo
+Se agrego una llamada a free y una a fclose y se volvió a realizar una entrega.
+ Esta vez las pruebas 1, 2 y 4 fueron correctas, pero la 3 arrojo un código
  de error extraño (134).
 \end_layout
 
 \begin_layout Standard
-Segun lo apreciado el programa estaria tratando de leer mas alla del espacio
+Según lo apreciado el programa estaría tratando de leer mas allá del espacio
  reservado de memoria.
- Al leer la salida de la ejecucion de valgrind sobre el codigo actual pareciera
- que estamos tratando de leerde la direccion 0x0.
- Utilizando strncpy podria solucionarse el problema, ya que el tercer argumento
- de dicha funcion es hasta cuantos caracteres voy a leer, evitando asi pasarme
+ Al leer la salida de la ejecución de valgrind sobre el código actual pareciera
+ que estamos tratando de leer de la dirección 0x0.
+ Utilizando strncpy podría solucionarse el problema, ya que el tercer argumento
+ de dicha función es hasta cuantos caracteres voy a leer, evitando así pasarme
  si la entrada es mas grande.
  
 \end_layout
@@ -1425,11 +1517,7 @@ Segun lo apreciado el programa estaria tratando de leer mas alla del espacio
 placement H
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1447,7 +1535,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/paso 5 salida valgrind prueba 2.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -1503,7 +1591,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/salida valgrind paso 5 error.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -1537,17 +1625,17 @@ name "fig:Salida-valgrind-paso"
 \end_layout
 
 \begin_layout Standard
-A continuacion de explican los errores mas comunes de accesos a memoria
+A continuación de explican los errores mas comunes de accesos a memoria
 \end_layout
 
 \begin_layout Itemize
 Segmentation fault: Se produce cuando un programa trata de acceder a una
- posicion de memoria a la cual no tiene acceso, o en una forma no permitida.
+ posición de memoria a la cual no tiene acceso, o en una forma no permitida.
  
 \end_layout
 
 \begin_layout Itemize
-Buffer oveflow: Se genera cuando se escribe en un buffer y el tamaño de
+Buffer overflow: Se genera cuando se escribe en un buffer y el tamaño de
  lo que tratamos de escribir excede el tamaño del buffer, pisando la memora
  adyacente a este.
  
@@ -1570,7 +1658,7 @@ La estructura de estos cuentos (y de todos los relativos a Holmes) es
 \end_layout
 
 \begin_layout Plain Layout
-similar: Sherlock esta en su casa de Baker Street, muchas veces en compañia
+similar: Sherlock esta en su casa de Baker Street, muchas veces en compañía
  
 \end_layout
 
@@ -1642,7 +1730,7 @@ Rene Geronimo Favaloro (La Plata, Argentina, 12 de julio de 1923 - Buenos
 \end_layout
 
 \begin_layout Plain Layout
-Aires, Argentina, 29 de julio de 2000) fue un prestigioso medico cirujano
+Aires, Argentina, 29 de julio de 2000) fue un prestigioso médico cirujano
  
 \end_layout
 
@@ -1708,7 +1796,7 @@ le solicito ayuda al gobierno sin recibir respuesta, lo que lo indujo a
 
 \begin_layout Plain Layout
 suicidarse.
- El 29 de julio de 2000, despues de escribir una carta al 
+ El 29 de julio de 2000, después de escribir una carta al 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1765,14 +1853,17 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 #include <stdio.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <string.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <stdlib.h>
 \end_layout
 
@@ -1781,18 +1872,22 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 #define LARGO_FILE 20
 \end_layout
 
 \begin_layout Plain Layout
+
 #define POS_NOMBRE_ARCHIVO 1
 \end_layout
 
 \begin_layout Plain Layout
+
 #define ARCHIVO_NO_ENCONTRADO 1
 \end_layout
 
 \begin_layout Plain Layout
+
 #define SALIDA_NORMAL 0
 \end_layout
 
@@ -1801,38 +1896,47 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
 \begin_layout Plain Layout
+
   char nombre[LARGO_FILE];
 \end_layout
 
 \begin_layout Plain Layout
+
   char *buffer;
 \end_layout
 
 \begin_layout Plain Layout
+
   FILE *fp;
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   strcpy(nombre, argv[POS_NOMBRE_ARCHIVO]);
 \end_layout
 
 \begin_layout Plain Layout
+
   fp = fopen(nombre, "r");
 \end_layout
 
 \begin_layout Plain Layout
+
   if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
 \end_layout
 
@@ -1841,34 +1945,42 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   buffer = malloc(sizeof(int)); /* buffer innecesario */
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   while ( !feof(fp) )
 \end_layout
 
 \begin_layout Plain Layout
+
   {
 \end_layout
 
 \begin_layout Plain Layout
+
     int c = fgetc(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
     if ( c != EOF )
 \end_layout
 
 \begin_layout Plain Layout
+
       printf("%c", (char) c);
 \end_layout
 
 \begin_layout Plain Layout
+
   }
 \end_layout
 
@@ -1877,10 +1989,12 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   fclose(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
   free(buffer);
 \end_layout
 
@@ -1889,10 +2003,12 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   return SALIDA_NORMAL;
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1910,7 +2026,7 @@ int main(int argc, char *argv[])
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Codigo paso 5
+Código paso 5
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Codigo-paso-5"
@@ -1939,15 +2055,15 @@ Paso 6
 \end_layout
 
 \begin_layout Standard
-Para corregir el problema reportado en el paso 5 se elimino el buffer inecesario
- y se puso directamente el argv1 en la llamada a fopen.
+Para corregir el problema reportado en el paso 5 se elimino el buffer innecesari
+o y se puso directamente el argv1 en la llamada a fopen.
  
 \end_layout
 
 \begin_layout Standard
-Seguido de la correcion se realizo una nueva entrega.
- En esta ocasion todas las pruebas a excepcion de la ultima pasaron, ya
- que aun no esta implementada la funcionalidad de la salida estandar (figura
+Seguido de la corrección se realizo una nueva entrega.
+ En esta ocasión todas las pruebas a excepción de la ultima pasaron, ya
+ que aun no esta implementada la funcionalidad de la salida estándar (figura
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1984,7 +2100,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/salida normas codif paso 6.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -1993,7 +2109,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Salida normas verificacion paso 6
+Salida normas verificación paso 6
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Salida-normas-verificacion"
@@ -2043,7 +2159,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/salida prueba 5 paso 6.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -2083,24 +2199,23 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset listings
 lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
 inline false
 status open
 
 \begin_layout Plain Layout
+
 #include <stdio.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <string.h>
 \end_layout
 
 \begin_layout Plain Layout
+
 #include <stdlib.h>
 \end_layout
 
@@ -2109,18 +2224,22 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 #define LARGO_FILE 20
 \end_layout
 
 \begin_layout Plain Layout
+
 #define POS_NOMBRE_ARCHIVO 1
 \end_layout
 
 \begin_layout Plain Layout
+
 #define ARCHIVO_NO_ENCONTRADO 1
 \end_layout
 
 \begin_layout Plain Layout
+
 #define SALIDA_NORMAL 0
 \end_layout
 
@@ -2129,30 +2248,37 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
 \begin_layout Plain Layout
+
   char *buffer;
 \end_layout
 
 \begin_layout Plain Layout
+
   FILE *fp;
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   fp = fopen(argv[POS_NOMBRE_ARCHIVO], "r");
 \end_layout
 
 \begin_layout Plain Layout
+
   if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
 \end_layout
 
@@ -2161,34 +2287,42 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   buffer = malloc(sizeof(int)); /* buffer innecesario */
 \end_layout
 
 \begin_layout Plain Layout
+
   
 \end_layout
 
 \begin_layout Plain Layout
+
   while ( !feof(fp) )
 \end_layout
 
 \begin_layout Plain Layout
+
   {
 \end_layout
 
 \begin_layout Plain Layout
+
     int c = fgetc(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
     if ( c != EOF )
 \end_layout
 
 \begin_layout Plain Layout
+
       printf("%c", (char) c);
 \end_layout
 
 \begin_layout Plain Layout
+
   }
 \end_layout
 
@@ -2197,10 +2331,12 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   fclose(fp);
 \end_layout
 
 \begin_layout Plain Layout
+
   free(buffer);
 \end_layout
 
@@ -2209,10 +2345,12 @@ int main(int argc, char *argv[])
 \end_layout
 
 \begin_layout Plain Layout
+
   return SALIDA_NORMAL;
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2230,7 +2368,7 @@ int main(int argc, char *argv[])
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Codigo fuente paso 6
+Código fuente paso 6
 \end_layout
 
 \end_inset
@@ -2264,11 +2402,11 @@ s < y >.
 \begin_layout Standard
 El caracter > permite redireccionar la salida del programa hacia un archivo.
  El caracter < permite tomar como entrada desde stdin a un archivo indicado
- despues de dicho caracter.
+ después de dicho caracter.
 \end_layout
 
 \begin_layout Standard
-Para finalizar se realizo una entrega final del codigo, con la cual todas
+Para finalizar se realizo una entrega final del código, con la cual todas
  las pruebas fueron exitosas.
 \end_layout
 
@@ -2298,7 +2436,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/paso 7 entrega aceptada.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -2353,7 +2491,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/paso 7 pruebas exito.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -2412,7 +2550,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/mira mama sin manos paso 7.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -2421,7 +2559,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ejecucion prueba 5 sin teclado
+Ejecución prueba 5 sin teclado
 \end_layout
 
 \end_inset
@@ -2464,7 +2602,7 @@ centering
 
 \begin_inset Graphics
 	filename screenshots/salida a salida paso 7.png
-	width 50page%
+	width 100text%
 	groupId common_image
 
 \end_inset
@@ -2482,6 +2620,257 @@ name "fig:Redireccionado-stdout"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,keywordstyle={\color{blue}},commentstyle={\color{magenta}\itshape},emphstyle={\color{red}},breaklines,stringstyle={\color{green}},identifierstyle={\color{cyan}}"
+inline false
+status open
+
+\begin_layout Plain Layout
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+#define LARGO_FILE 20
+\end_layout
+
+\begin_layout Plain Layout
+#define POS_NOMBRE_ARCHIVO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define ARCHIVO_NO_ENCONTRADO 1
+\end_layout
+
+\begin_layout Plain Layout
+#define SALIDA_NORMAL 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+int main(int argc, char *argv[])
+\end_layout
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\begin_layout Plain Layout
+  char *buffer;
+\end_layout
+
+\begin_layout Plain Layout
+  FILE *fp = stdin;
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  if (argc > POS_NOMBRE_ARCHIVO) 
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    fp = fopen(argv[POS_NOMBRE_ARCHIVO], "r");
+\end_layout
+
+\begin_layout Plain Layout
+    if ( fp == NULL ) return ARCHIVO_NO_ENCONTRADO;
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  buffer = malloc(sizeof(int)); /* buffer innecesario */
+\end_layout
+
+\begin_layout Plain Layout
+  
+\end_layout
+
+\begin_layout Plain Layout
+  while ( !feof(fp) )
+\end_layout
+
+\begin_layout Plain Layout
+  {
+\end_layout
+
+\begin_layout Plain Layout
+    int c = fgetc(fp);
+\end_layout
+
+\begin_layout Plain Layout
+    if ( c != EOF )
+\end_layout
+
+\begin_layout Plain Layout
+      printf("%c", (char) c);
+\end_layout
+
+\begin_layout Plain Layout
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  if (argc > POS_NOMBRE_ARCHIVO) 
+\end_layout
+
+\begin_layout Plain Layout
+    fclose(fp);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  free(buffer);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+  return SALIDA_NORMAL;
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Código fuente final
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Conclusión
+\end_layout
+
+\begin_layout Standard
+El trabajo practico sirvió para tomar conocimiento de los lineamientos que
+ se van a seguir a la hora de la corrección de los trabajos prácticos durante
+ la cursada de la materia.
+\end_layout
+
+\begin_layout Standard
+Además tomamos un primer contacto con el sistema de corrección automática,
+ lo cual es importante para tener un mejor dominio del mismo en futuras
+ entregas.
+\end_layout
+
+\begin_layout Standard
+El poder descargarse las pruebas que son ejecutadas por el sistema para
+ poder correrlas en forma local es de gran ayuda para verificar que lo hecho
+ en el trabajo practico este cumpliendo con las expectativas mínimas del
+ sistema.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+Salida entrega final
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset External
+	template PDFPages
+	filename salidaEntregaTp0.pdf
 
 \end_inset
 
