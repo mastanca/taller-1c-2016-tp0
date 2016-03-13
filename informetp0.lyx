@@ -529,8 +529,9 @@ name "fig:Salida-error-SERCOM"
 \end_layout
 
 \begin_layout Standard
-Los errores generados son errores del linker, ya que estamos haciendo llamadas
- a funciones no incluidas previamente con una directiva #include
+Los errores generados son del compilador, ya que los warnings estan seteados
+ para que sean tomados como errores y estamos haciendo llamadas a funciones
+ no incluidas previamente con una directiva #include
 \end_layout
 
 \begin_layout Standard
